@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>CODE RUSH</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	
+	
+	<!-- Font -->
+	
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CPoppins:400,500" rel="stylesheet">
+	
+	
+	<link href="common-css/ionicons.css" rel="stylesheet">
+	
+	
+	<link rel="stylesheet" href="common-css/jquery.classycountdown.css" />
+		
+	<link href="coming-soon/css/styles.css" rel="stylesheet">
+	
+	<link href="coming-soon/css/responsive.css" rel="stylesheet">
+	
+</head>
+<body>
+	
+	<div class="main-area center-text" style="background-image:url(images/blur-close-up-desk-433604.jpg);" >
+		
+		<div class="display-table">
+			<div class="display-table-cell">
+				
+				<h1><class="title"><b> CODE RUSH Coming Soon!!</b></h1>
+					<p class="desc font-white">Our website will be up shortly.Be ready, there is just:</p>
+				<div id="normal-countdown" data-date="2019/02/15"></div>
+			
+				<div class="email-input-area">
+					<form method="post" id="contactForm">
+						<input class="email-input" name="email" type="text" placeholder="Enter your email" required />
+						<button class="submit-btn" name="submit" type="submit"><b>NOTIFY ME</b></button>
+					</form>
+				</div><!-- email-input-area -->
+							
+				
+				
+				<ul class="social-btn">
+					<li class="list-heading">Follow us for update</li>
+					<li><a href="#"><i class="ion-social-facebook"></i></a></li>
+					<li><a href="#"><i class="ion-social-twitter"></i></a></li>
+					<li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+				
+				</ul>
+				
+			</div><!-- display-table -->
+		</div><!-- display-table-cell -->
+	</div><!-- main-area -->
+	
+<
+	<!-- SCIPTS -->
+	
+	<script src="common-js/jquery-3.1.1.min.js"></script>
+	
+	<script src="common-js/jquery.countdown.min.js"></script>
+	
+	<script src="common-js/scripts.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
+	<script type="module">
+  	// Initialize Firebase
+	import {dataFire} from './firebaseConst.js';
+        console.log(dataFire);
+
+	$('#contactForm').submit(function(evt) {
+  		evt.preventDefault();
+  		var formStuff = {
+  			"email": $('#email').val(),
+		}
+  		firebase.initializeApp(dataFire); 
+  		firebase.database().ref('/inviteEmails').push( formStuff, function(err){ 
+  			if(err)
+  				swal({ text:'Something went wrong, Please try again!', icon:'error' });
+  			else
+  				swal({ text:'Successfully entered!', icon:'success' });
+  		}); 
+  		$('#email').val('');
+	})
+</script>
+
+	
+	
+</body>
+</html>
