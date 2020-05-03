@@ -34,7 +34,7 @@
 				<div id="normal-countdown" data-date="2019/02/15"></div>
 			
 				<div class="email-input-area">
-					<form method="post" id="contactForm">
+					<form action="https://formspree.io/vikasts98@gmail.com" method="POST" id="contactForm">
 						<input class="email-input" name="email" type="text" placeholder="Enter your email" required />
 						<button class="submit-btn" name="submit" type="submit"><b>NOTIFY ME</b></button>
 					</form>
@@ -62,30 +62,7 @@
 	
 	<script src="common-js/scripts.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-
-	<script type="module">
-  	// Initialize Firebase
-	import {dataFire} from './firebaseConst.js';
-        console.log(dataFire);
-
-	$('#contactForm').submit(function(evt) {
-  		evt.preventDefault();
-  		var formStuff = {
-  			"email": $('#email').val(),
-		}
-  		firebase.initializeApp(dataFire); 
-  		firebase.database().ref('/inviteEmails').push( formStuff, function(err){ 
-  			if(err)
-  				swal({ text:'Something went wrong, Please try again!', icon:'error' });
-  			else
-  				swal({ text:'Successfully entered!', icon:'success' });
-  		}); 
-  		$('#email').val('');
-	})
-</script>
-
-	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>	
 	
 </body>
 </html>
